@@ -2,11 +2,13 @@
 <div id="register">
 <div class="formulario">
     <h1>Crear cuenta</h1>
-     <input type="text" name="username" v-model="input.username" placeholder="Usuario">
-      <input type="password" name="password" v-model="input.email" placeholder="Email">
-      <input type="text" name="username" v-model="input.password" placeholder="Contraseña">
-      <input type="password" name="password" v-model="input.tipo" placeholder="Tipo">
-       <button type="button" v-on:click="signup()">Registrar</button>
+    <form>
+      <input type="text" name="username" v-model="input.username" placeholder="Usuario" required>
+      <input type="email" name="email" v-model="input.email" placeholder="Email" required>
+      <input type="password" name="password" v-model="input.password" placeholder="Contraseña" required>
+      <!--input type="password" name="password" v-model="input.tipo" placeholder="Tipo" Esto no va, de eso se encarga el servicio-->
+      <button v-on:click="signup()">Registrar</button>
+    </form>
 </div>
 </div>
 </template>
@@ -49,7 +51,7 @@ methods: {
         border: 1px solid #CCCCCC;
         background-color: #FFFFFF;
         margin: auto;
-        margin-top: 10%;
+        margin-top: 61px; /*asi lo hace ver mejor para que no quede pegado arriba (antes tenia 10%)*/
         padding: 20px;
         display: block;
         text-align: center;
@@ -57,7 +59,7 @@ methods: {
         border-radius: 3px;
         box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
     }
-    input, button{
+    input, button, .button{
       width: 90%;
       height: 40%;
       margin: 5px;
@@ -72,12 +74,12 @@ methods: {
         margin-top: 10%;
 
     }
-    input, button{
+    /*input, button{
       width: 90%;
       height: 40%;
-    }
+    } esto sobra*/
 
-    button{
+    button, .button{
         padding: 2%;
     }
 }

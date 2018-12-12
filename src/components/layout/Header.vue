@@ -10,6 +10,15 @@
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
         <button v-on:click="estado">probar</button>
       </nav>
+      <div class="menu-movil"  v-on:click="hiddenMenu = !hiddenMenu">
+        <img src="../../assets/img/menu.png" alt="" class="menu">
+      </div>
+      <nav class="navegacion-menu-movil" v-bind:class="{ 'esconder': hiddenMenu }" >
+        <router-link to="about">Quienes somos</router-link>
+        <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
+        <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
+        <button v-on:click="estado">probar</button>
+      </nav>
     </div>
     <router-view @authenticated="setAuthenticated" />
   </div>
@@ -24,7 +33,8 @@
                 mockAccount: {
                     username: "marbel",
                     password: "mm"
-                }
+                },
+                hiddenMenu: true
             }
         },
 
@@ -83,12 +93,17 @@ div.logo img {
 
 /** Nav principal **/
 
-nav.navegacion-principal {
+nav.navegacion-principal{
   display: none;
   width: 100%;
 }
+nav.navegacion-menu-movil {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 
-nav.navegacion-principal a {
+nav.navegacion-principal a,nav.navegacion-menu-movil a {
   font-family: "Oswald", sans-serif;
   color: #ffffff;
   font-size: 0.8em;
@@ -100,17 +115,17 @@ nav.navegacion-principal a {
   clear: both;
 }
 
-nav.navegacion-principal a:hover {
+nav.navegacion-principal a:hover,nav.navegacion-menu-movil a:hover {
   background-color: var(--piel);
 }
 
-nav.navegacion-principal a:last-child {
+/*nav.navegacion-principal a:last-child {
   font-weight: bold;
 }
 
 nav.navegacion-principal a:last-child:hover {
   color: #ffffff;
-}
+}*/
 
 @media only screen and (min-width: 768px) {
   nav.navegacion-principal {
@@ -122,23 +137,30 @@ nav.navegacion-principal a:last-child:hover {
   nav.navegacion-principal a {
     padding: 10px 10px;
     display: inline-block;
-    width: auto;
-    display: inline-block;
+    width: auto;    
     text-align: center;
     margin: 0 10px 0 0;
+  }
+  nav.navegacion-menu-movil {
+    display: none;
   }
 }
 
 div.menu-movil {
-  width: 60px;
+  width: 35px;
   display: block;
   float: right;
-  text-align: right;
-  margin-top: 12px;
+  text-align: center;
+  padding: 3px;
+}
+
+div.menu-movil img{
+  width: 18px;
 }
 
 div.menu-movil:hover {
   cursor: pointer;
+  background-color: var(--piel);
 }
 
 @media only screen and (min-width: 768px) {
@@ -153,4 +175,13 @@ div.menu-movil span {
   background-color: white;
   display: block;
 }
+.esconder{
+  display: none!important;
+}
+
+.topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 </style>

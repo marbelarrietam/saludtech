@@ -46,7 +46,7 @@ data() {
         border: 1px solid #CCCCCC;
         background-color: #FFFFFF;
         margin: auto;
-        margin-top: 10%;
+        margin-top: 61px; /*asi lo hace ver mejor para que no quede pegado arriba (antes tenia 10%)*/
         padding: 20px;
         display: block;
         text-align: center;
@@ -69,12 +69,12 @@ data() {
         margin-top: 10%;
 
     }
-    input, button{
+    /*input, button{
       width: 90%;
       height: 40%;
-    }
+    } esto sobra*/
 
-    button{
+    button, .button{
         padding: 2%;
     }
 }

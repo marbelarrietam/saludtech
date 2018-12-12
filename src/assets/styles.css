@@ -55,7 +55,7 @@ h1{
     color: var(--piel);
 }
 
-button{
+button, .button{
   border-width: 0;
   outline: none;
   border-radius: 2px;
