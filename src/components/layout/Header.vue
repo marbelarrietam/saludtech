@@ -49,7 +49,7 @@
     }
 </script>
 <style>
-
+@import '../../assets/styles.css';
 div.barra {
   padding: 10px;
   background-color: var(--azul);
