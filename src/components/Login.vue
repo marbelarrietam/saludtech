@@ -2,37 +2,58 @@
   <div id="Login">
     <div class="formulario">
       <h1>Inicio de sesión</h1>
-      <input type="text" name="username" v-model="input.username" placeholder="Usuario">
-      <input type="password" name="password" v-model="input.password" placeholder="Contraseña">
-      <button type="button" v-on:click="login()">Login</button>
+      
+        <input type="text" name="username" v-model="input.username" placeholder="Usuario" required>
+        <input type="password" name="password" v-model="input.password" placeholder="Contraseña" required>
+        <button v-on:click="login()">Login</button>
+      
+     
       <router-link to="signup">Crear cuenta</router-link>
-    </div>
+      <br>
+      <br>
+      <br>
+      <div class="error-usuario">
+          {{mensaje}}
+      </div>
+      </div>
+      
   </div>
 </template>
 
 <script>
  export default {
         name: 'Login',
-data() {
-    return {
-        input: {
-            username: "",
-            password: ""
-        }
-    }
-},
+        data() {
+            return {
+                input: {
+                    username: "",
+                    password: ""
+                },
+                mensaje:""
+            }
+        },
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                      //  localStorage.setItem('user',input.username)
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
+                    var formData = new FormData();
+                    formData.append('usuario', this.input.username);
+                    formData.append('clave', this.input.password);
+                    console.log(formData)
+                    this.$http.post('http://192.168.2.98:5000/ingreso', formData)
+                        .then(resp => {
+                                        console.log(resp.body.respuesta);
+                                        if(resp.body.respuesta === 'OK') {
+                                            this.$emit("authenticated", true);
+                                            //  localStorage.setItem('user',input.username)
+                                            this.$router.replace({ name: "secure" });
+                                        } else {
+                                            this.mensaje =resp.body.mensaje
+                                        }
+                                        
+                                       })
+                      
                 } else {
-                    console.log("A username and password must be present");
+                    this.mensaje ="A username and password must be present"
                 }
             }
         }
@@ -76,6 +97,10 @@ data() {
 
     button, .button{
         padding: 2%;
+    }
+
+    .error-usuario{
+        color: red;
     }
 }
 </style>
