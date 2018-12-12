@@ -1,7 +1,7 @@
 <template>
   <footer class="site-footer">
   <div class="contenedor clearfix">
-    <div class="footer-informacion">
+    <div class="footer-informacion clearfix">
       <h3>SaludTech</h3>
       <p>contacto@saludtech.com</p>
     </div>
