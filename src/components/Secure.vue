@@ -47,11 +47,11 @@
     div.bienvenida{
         text-align: center;
         color: #fff;
-        width:90%;
+        width:100%;
         height:430px;
         position:absolute;
         top: 0;
-        right:10px;
+        right:0px;
         padding-top: 120px;
     }
     div.bienvenida h1{
