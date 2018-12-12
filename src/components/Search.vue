@@ -1,5 +1,8 @@
 <template>
   <div id="main">
+    <div class="hero">
+
+    </div>
     <h1 v-for="i in elem">{{ i }}</h1>
   </div>
 </template>
@@ -17,32 +20,8 @@ export default {
         4,
         4,
         3,
-        1,
-        2,
-        2,
-        1,
-        3,
-        3,
-        3,
-        2,
-        2,
-        2,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        2,
-        3,
-        9
+        1
+        
       ]
     };
   },
@@ -53,5 +32,13 @@ export default {
 <style>
 #main{
   margin-top: 80px;
+}
+div.hero{
+    background-image: url(../assets/img/medicoBg.png);
+    height: 100vh;
+    height: 300px;
+    background-position: top center;
+    background-size: cover;
+    margin-top: -30px;
 }
 </style>
