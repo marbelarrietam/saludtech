@@ -1,5 +1,5 @@
 <template>
-  <footer class="site-footer">
+  <footer class="site-footer clearfix">
   <div class="contenedor clearfix">
     <div class="footer-informacion clearfix">
       <h3>SaludTech</h3>

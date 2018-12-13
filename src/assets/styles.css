@@ -40,6 +40,59 @@ div.barra {
   padding: 10px;
   background-color: var(--azul);
 }
+.cabecera{
+  position:relative;
+}
+
+div.hero{
+  background-image: url(../assets/img/medicos.jpg);
+  height: 100vh;
+  height: 430px;
+  opacity:0.24;
+  background-position: top center;
+  background-size: cover;
+}
+div.barra-imagen{
+  background-image: url(../assets/img/medicosespecialista.jpg);
+  height: 100vh;
+  height: 320px;
+  background-position: top center;
+  background-size: cover;
+}
+.contenedor-principal{
+  text-align: center;
+}
+div.bienvenida{
+  text-align: center;
+  color: #fff;
+  width:100%;
+  height:430px;
+  position:absolute;
+  top: 0;
+  right:0px;
+  padding-top: 120px;
+}
+div.bienvenida h1{
+  font-size: 48px;
+}
+div.bienvenida p{
+  font-size: 30px;
+  color:var(--azul);
+  padding-top: 10px;
+}
+div.bienvenida button{
+  margin-top: 30px;
+}
+@media only screen and (max-width: 768px) {
+  div.bienvenida h1{
+      font-size: 38px;
+  }
+  div.bienvenida p{
+      font-size: 24px;
+      color:var(--azul);
+      padding-top: 10px;
+  }
+}
 .brand{
   margin: 0;
 }
@@ -71,3 +124,32 @@ button:hover{
   background-color: #9C5435;
 }
 
+div.categoria{
+  width: 100%;
+  background-color:var(--azul);
+  color:var(--piel);
+  text-align: center;
+  
+}
+nav.categoria li{
+  list-style: none;
+}
+.error-usuario{
+  color: red;
+}
+nav.categoria a {
+  font-family: "Oswald", sans-serif;
+  color: #ffffff;
+  font-size: 0.8em;
+  text-decoration: none;
+  transition: all 0.6s ease;
+  width: 100%;
+  padding: 10px 10px;
+  float: left;
+  width: 150px;    
+  text-align: center;
+  margin: 0;
+}
+nav.categoria a:hover{
+  background-color: var(--piel);
+}

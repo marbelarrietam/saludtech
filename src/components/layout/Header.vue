@@ -9,7 +9,6 @@
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
         <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
-        <button v-on:click="estado">probar</button>
       </nav>
       <div class="menu-movil"  v-on:click="hiddenMenu = !hiddenMenu">
         <img src="../../assets/img/menu.png" alt="" class="menu">
@@ -19,7 +18,6 @@
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
         <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
-        <button v-on:click="estado">probar</button>
       </nav>
     </div>
     <router-view @authenticated="setAuthenticated" />
@@ -36,7 +34,9 @@
                     username: "marbel",
                     password: "mm"
                 },
-                hiddenMenu: true
+                hiddenMenu: true,
+                servidor: "http://localhost:5000/",
+                categorias:[] 
             }
         },
 
@@ -44,20 +44,18 @@
             setAuthenticated(status) {
                 this.authenticated = status;
                 this.$emit("authenticated", status);
-                console.log(this.authenticated)
             },
             logout() {
 
                   this.authenticated = false;
                  this.$router.replace({ name: "search" });
-                 console.log(this.authenticated)
 
-            },
-            estado(){
-              console.log("el estado es")
-              console.log(this.authenticated)
             }
-        }
+        },
+        created(){
+            this.$http.get(this.servidor+'categoria')
+                      .then(resp => this.categorias =resp.body)
+          }
     }
 </script>
 <style>

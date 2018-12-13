@@ -1,39 +1,31 @@
 <template>
   <div id="servicios">
-    <h1>Listado de nuestros médicos</h1>
+       <h1>Listado de nuestros médicos y servicios</h1>
     <h2>Encuentra el indicado para ti</h2>
-    <div class="contenedor" v-for="m in medicos" :key="m">
-      <stmed class="tarjeta" :med="m"></stmed>
+    <div class="clearfix contenedor">
+      <div class="contenedor" v-for="m in this.tarifas" :key="m">
+        <sttarifa class="tarjeta" :med="m"></sttarifa>
+      </div>
     </div>
+    
   </div>
+  
 </template>
 
 <script>
-import stmed from './layout/Card.vue'
+import sttarifa from './layout/Card.vue'
 export default {
 name: 'servicios',
-components: { stmed },
+components: { sttarifa },
 data(){
   return{
-  medicos: [
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
-      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"}
-      ]
+  tarifas: []
   }
+},
+created(){
+  this.$http.get(this.$parent.servidor+'tarifa')
+            .then(resp => {this.tarifas =resp.body
+                            console.log(this.tarifas)})
 }
 }
 </script>

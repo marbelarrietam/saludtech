@@ -31,7 +31,7 @@ methods: {
                     formData.append('email', this.input.email);
                     formData.append('clave', this.input.password);
                     console.log(formData)
-                    this.$http.post('http://192.168.2.98:5000/registro', formData)
+                    this.$http.post(this.$parent.servidor+'registro', formData)
                         .then(resp => {
                                         console.log(resp.body.respuesta);
                                         if(resp.body.respuesta === 'OK') {

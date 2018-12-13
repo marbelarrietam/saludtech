@@ -6,12 +6,12 @@
       <div class="informacion-principal">
             <h1 class="nombre-sitio">SALUDTECH</h1>
             <p class="slogan">Accede a los mejores servicios médicos con<span> un solo clic</span></p>
-            <label for="busqueda">Busqueda:</label>  <input type="search" name="busqueda" id="busqueda" placeholder="Palabra clave">
+            <label for="busqueda" >Busqueda:</label>  <input type="search" v-on:keyup.enter="explora()" name="busqueda" id="busqueda" placeholder="Palabra clave">
       </div>      
     </div>
     <div class="categoria">
       <nav class="categoria clearfix">
-          <li v-for="categoria in categorias"><a href="#">{{ categoria.descripcion }}</a></li>
+          <li v-for="categoria in this.$parent.categorias" :key="categoria" ><a v-on:click="explora()">{{ categoria.descripcion }}</a></li>
       </nav>
     </div>
     <h1>Fácil, rápido y amigable con tu bolsillo</h1>
@@ -29,6 +29,29 @@
         <p>Encuentra precios bajos sin afectar la calidad del servicio</p>
       </div>
     </div>
+      <div class="clearfix">
+        <div class="barra-imagen">
+        </div>
+        <div class="contenedor-principal">
+      
+              <h1>ADELANTE</h1>
+              <p>Los mejores especialistas están en SaludTech.<br>
+                Los mejores precios también. <br>
+                Seleccionamos los mejores especialistas privados en su área, y los ponemos a tu disposición. Y siempre con los mejores precios garantizados.</p>
+              <button class="comentameMas" v-on:click="explora()">Conocer mas</button>
+        </div>
+        <div class="barra-imagen dos">
+        </div>
+        <div class="contenedor-principal">      
+              <h1>Nuestros servicios</h1>
+              <div class="box-hija" v-for="categoria in this.$parent.categorias" :key="categoria" v-on:click="explora()">
+                  <p class=titulo>{{ categoria.descripcion }}</p>                 
+                  <img class="img-medicina" src="../assets/img/medicina.jpg" alt="">
+              </div>
+        </div>
+    </div>
+    
+    
   </div>
 </template>
 
@@ -37,16 +60,14 @@ export default {
   name: "app",
   data() {
     return {
-      prueba: "HOLA",
-      categorias:[]
+      prueba: "HOLA"
     };
   },
-  methods: { 
-  },
-  created(){
-      this.$http.get('http://192.168.2.98:5000/categoria')
-                .then(resp => this.categorias =resp.body)
-    }
+  methods:{
+            explora(){
+                this.$router.replace({ name: "services" });
+            }
+        }
 };
 </script>
 
@@ -62,6 +83,10 @@ export default {
   position:relative;
 }
 
+.titulo{
+  font-size: 18px;
+  color: var(--piel);
+}
 
 .box-hija{
   width:30%;
@@ -76,6 +101,10 @@ export default {
   text-align: center;
 }
 
+.img-medicina{
+  width: 80%;
+  height: 150px;
+}
 
 div.hero{
     background-image: url(../assets/img/medico.jpg);
@@ -86,7 +115,6 @@ div.hero{
     background-size: cover;
     margin-top: -30px;
     padding-top: 40px;
-    background-size: 100%;
 }
 div.informacion-principal{
     text-align: right;
@@ -109,6 +137,7 @@ div.informacion-principal label{
 p.slogan{
     color:var(--azul);
     font-size: 24px;
+    margin-top: 28px;
 }
 #busqueda{
   width: 500px;
@@ -116,34 +145,10 @@ p.slogan{
   border: 2px solid #ccc;
   border-radius: 4px;
 }
-div.categoria{
-  width: 100%;
-  background-color:var(--azul);
-  color:var(--piel);
-  text-align: center;
-  
-}
-nav.categoria li{
-  list-style: none;
-}
 
-nav.categoria a {
-  font-family: "Oswald", sans-serif;
-  color: #ffffff;
-  font-size: 0.8em;
-  text-decoration: none;
-  transition: all 0.6s ease;
-  width: 100%;
-  padding: 10px 10px;
-  float: left;
-  width: 150px;    
-  text-align: center;
-  margin: 0;
+.nombre-sitio{
+  margin-bottom: 0px;
 }
-nav.categoria a:hover {
-  background-color: var(--piel);
-}
-
 @media only screen and (max-width: 768px) {
   div.informacion-principal{
     font-size: 28px;
@@ -163,4 +168,10 @@ nav.categoria a:hover {
   display: block;
 }
 }
+
+.dos{
+  margin-top: 20px;
+  background-image: url(../assets/img/medicoBg.jpg) !important;
+}
+
 </style>

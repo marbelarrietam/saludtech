@@ -1,16 +1,28 @@
 <template>
 <div id="register">
+    
 <div class="formulario">
     <h1>Crear cuenta médica</h1>
-      <input type="text" name="primerNombre" v-model="input.primerNombre" placeholder="Primer nombre">
-      <input type="text" name="segundoNombre" v-model="input.segundoNombre" placeholder="Segundo nombre">
-      <input type="text" name="primerApellido" v-model="input.primerApellido" placeholder="Primer apellido">
-      <input type="text" name="segundoApellido" v-model="input.segundoApellido" placeholder="Segundo apellido">
-      <input type="text" name="documento" v-model="input.documento" placeholder="Documento de identidad">
-      <input type="text" name="especialidad" v-model="input.especialidad" placeholder="Especialidad">
-      <input type="text" name="fechaNacimiento" v-model="input.fechaNacimiento" placeholder="Fecha de nacimiento">
-      <button v-on:click="signup()">Registrar</button>
+        <input type="text" name="primerNombre" v-model="input.primerNombre" placeholder="Primer nombre">
+        <input type="text" name="segundoNombre" v-model="input.segundoNombre" placeholder="Segundo nombre">
+        <input type="text" name="primerApellido" v-model="input.primerApellido" placeholder="Primer apellido">
+        <input type="text" name="segundoApellido" v-model="input.segundoApellido" placeholder="Segundo apellido">
+        <input type="text" name="documento" v-model="input.documento" placeholder="Documento de identidad">
+        <select v-model="input.especialidad">
+            <option v-for="option in this.$parent.categorias" v-bind:value="option.idCategoria" :key="option">
+                {{ option.descripcion }}
+            </option>
+        </select>
+        <input v-model="input.fechaNacimiento" placeholder = "Fecha de nacimiento" class = "textbox-n" type = "text" onfocus = "(this.type = 'date')"  id = "date">
+        <button v-on:click="signup()">Registrar</button>
+        <br>
+      <br>
+      <br>
+      <div class="error-usuario">
+          {{mensaje}}
+      </div>
 </div>
+
 </div>
 </template>
 
@@ -28,11 +40,13 @@ data() {
             especialidad: "",
             fechaNacimiento: ""
             
-        }
+        },
+        mensaje:""
     }
 },
 methods: {
             signup() {
+                
                 if(
                     this.input.primerNombre != "" 
                     && this.input.segundoNombre != "" 
@@ -42,6 +56,8 @@ methods: {
                     && this.input.especialidad != ""
                     && this.input.fechaNacimiento != ""
                     ) {
+
+                
                     var formData = new FormData();
                     formData.append('primerNombre', this.input.primerNombre);
                     formData.append('segundoNombre', this.input.segundoNombre);
@@ -50,17 +66,16 @@ methods: {
                     formData.append('documento', this.input.documento);
                     formData.append('especialidad', this.input.especialidad);
                     formData.append('fechaNacimiento', this.input.fechaNacimiento);
-                    console.log(formData)
-                    this.$http.post('http://192.168.2.98:5000/registro/medico', formData)
-                        .then(resp => {
-                                        console.log(resp.body.respuesta);
-                                        if(resp.body.respuesta === 'OK') {
-                                            this.$router.replace({ name: "login" });
-                                        } else {
-                                            this.mensaje =resp.body.mensaje
-                                        }
-                                        
-                                       })
+                    this.$http.post(this.$parent.servidor+'registro/medico', formData)
+                       .then(resp => {
+                                       console.log(resp.body.respuesta);
+                                       if(resp.body.respuesta === 'OK') {
+                                           this.$router.replace({ name: "login" });
+                                       } else {
+                                           this.mensaje =resp.body.mensaje
+                                       }
+                                       
+                                      })
                       
                 } else {
                     this.mensaje ="Todos los campos son requeridos"
@@ -83,7 +98,14 @@ methods: {
         border-radius: 3px;
         box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
     }
-    input, button, .button{
+    input[type="date"]::before{
+         color: #ffffff;
+        content: attr(placeholder) ":";
+    }
+    input[type="date"]:focus::before {
+        content: "" !important;
+    }
+    input, button, .button,select{
       width: 90%;
       height: 40%;
       margin: 5px;
@@ -101,4 +123,6 @@ methods: {
     } esto sobra*/
    
 }
+
+
 </style>

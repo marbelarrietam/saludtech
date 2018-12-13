@@ -10,7 +10,7 @@
      
       <router-link to="signup">Crear cuenta</router-link>
       <br>
-      <router-link to="signupmed">Si eres un médico y quieres prestar tus servicios registrate aquí</router-link>
+      <router-link to="signupmed">Si eres un médico y quieres prestar tus servicios regístrate aquí</router-link>
       <br>
       <br>
       <br>
@@ -41,7 +41,7 @@
                     formData.append('usuario', this.input.username);
                     formData.append('clave', this.input.password);
                     console.log(formData)
-                    this.$http.post('http://192.168.2.98:5000/ingreso', formData)
+                    this.$http.post(this.$parent.servidor+'ingreso', formData)
                         .then(resp => {
                                         console.log(resp.body.respuesta);
                                         if(resp.body.respuesta === 'OK') {
@@ -97,9 +97,7 @@
         padding: 2%;
     }
 
-    .error-usuario{
-        color: red;
-    }
+    
 }
 
 </style>
