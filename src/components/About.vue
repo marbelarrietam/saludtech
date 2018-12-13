@@ -1,13 +1,22 @@
 <template>
 <div>
-  <div class="bajar">
-  <h1>Nosotros</h1>
-  <p>acerca de saludtech</p>
+  <div class="contenedor-principal">      
+      <h1>NOSOTROS</h1>
+      <p>
+          SOMOS ESTUDIANTES DE ESPECIALIZACIÓN EN INGENIERIA DE SOFTWARE. <br>
+          <br>
+          MARBEL ARRIETA<br>
+          ANTONIO PONCE<br>
+          WILLIAM VARGAS
+      </p>
   </div>
 </div>
 </template>
 <style>
 .bajar{
+  margin-top: 80px;
+}
+.contenedor-principal{
   margin-top: 80px;
 }
 </style>

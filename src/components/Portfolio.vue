@@ -3,8 +3,8 @@
        <h1>Listado de nuestros médicos y servicios</h1>
     <h2>Encuentra el indicado para ti</h2>
     <div class="clearfix contenedor">
-      <div class="contenedor" v-for="m in tarifas" :key="m">
-        <stmed class="tarjeta" :med="m"></stmed>
+      <div class="contenedor" v-for="m in this.tarifas" :key="m">
+        <sttarifa class="tarjeta" :med="m"></sttarifa>
       </div>
     </div>
     

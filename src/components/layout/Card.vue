@@ -1,10 +1,13 @@
 <template>
   <div>
-      <div class="medico">
-          <img src="../../assets/img/medicocard.jpg" alt="Imagen invitado">
-          <router-link to="aboutmed">{{ med.Medico }}</router-link>
-          <p>{{ med.descripcion }}</p>
-          <p>{{ med.Precio }}</p>
+      <div class="medico" >          
+          <router-link to="aboutmed">
+              {{ med.Medico }}
+              <img src="../../assets/img/medicocard.jpg" alt="Imagen invitado">
+              <p>{{ med.descripcion }}</p>
+              <p>{{ formatNumber(med.Precio) }}</p>
+          </router-link>
+          
       </div>
   </div>
 </template>
@@ -12,6 +15,19 @@
   export default{
     props: {
         med: { type: Object, required: true }
+    },
+    methods:{
+        formatNumber(num) {
+            num += '';
+            var splitStr = num.split('.');
+            var splitLeft = splitStr[0];
+            var splitRight = splitStr.length > 1 ? '.' + splitStr[1] : '';
+            var regx = /(\d+)(\d{3})/;
+            while (regx.test(splitLeft)) {
+                splitLeft = splitLeft.replace(regx, '$1' + '.' + '$2');
+            }
+            return '$' + splitLeft + splitRight;
+        }
     }
   }
 </script>
@@ -30,13 +46,20 @@
     }
 
     .medico:hover{
-                filter: grayscale(100%);
+                -webkit-transform:scale(1.1);transform:scale(1.1);
+                transition: all 0.6s ease;
     }
     .medico img{
         width: 100%;
         background-color: rgb(50,50,50);
         background-blend-mode: soft-light;
 
+    }
+    .medico p{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
     }
     @media only screen and (max-width: 768px) {
   .medico{
