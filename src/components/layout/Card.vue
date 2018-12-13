@@ -1,9 +1,9 @@
 <template>
   <div>
       <div class="medico">
-        <router-link to="aboutmed">Quienes somos</router-link>
-          <img src="../../assets/logo.png" alt="Imagen invitado">
-          <p>{{ med.nombre }}</p>
+          <img src="../../assets/img/medicocard.jpg" alt="Imagen invitado">
+          <router-link to="aboutmed">{{ med.nombre }}</router-link>
+          <p>{{ med.especialidad }}</p>
       </div>
   </div>
 </template>
@@ -14,3 +14,32 @@
   },
   }
 </script>
+
+<style scoped>
+    .medico{
+        width: 20%;
+        display:block;
+        text-align: center;
+        -webkit-box-shadow: 3px 3px 2px 0px rgba(159,188,207,1);
+        -moz-box-shadow: 3px 3px 2px 0px rgba(159,188,207,1);
+        box-shadow: 3px 63x 2px 0px rgba(159,188,207,1);
+        margin: 10px;
+        float: left;
+    }
+
+    .medico:hover{
+                filter: grayscale(100%);
+    }
+    .medico img{
+        width: 100%;
+        background-color: rgb(50,50,50);
+        background-blend-mode: soft-light;
+
+    }
+    @media only screen and (max-width: 768px) {
+  .medico{
+      width: 100%;
+  }
+}
+
+</style>
