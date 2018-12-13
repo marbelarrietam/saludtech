@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="clearfix">
   <stheader></stheader>
   <stfooter></stfooter>
   </div>
@@ -13,7 +13,7 @@ export default {
  components: { stheader, stfooter },
    data() {
             return {
-                
+              
             }
         }
   }
@@ -23,5 +23,10 @@ export default {
 </script>
 
 <style>
-@import './assets/styles.css'
+@import './assets/styles.css';
+#app{
+  display: block;
+  position: relative;
+  min-height: 100%;
+}
 </style>

@@ -6,9 +6,9 @@
             <div class="bienvenida">
                 <h1>BIENVENIDO</h1>
                 <p>
-                    ¿YA TE ENTERASTE DE LOS NUEVOS SERVICIOS Y TARIFAS QUE TENEMOS?
+                    ¿Ya te enteraste de nuestros médicos, servicios y tarifas?
                 </p>
-                <button class="comentameMas" v-on:click="principal()">COMENTAME MAS</button>
+                <button class="comentameMas" v-on:click="explora()">Conocer mas</button>
             </div>
         </div>
         
@@ -21,9 +21,9 @@
         data() {
             return {};
         },
-        methods: {
-            principal(){
-                this.$router.replace({ name: "search" });
+        methods:{
+            explora(){
+                this.$router.replace({ name: "services" });
             }
         }
     }
@@ -37,12 +37,15 @@
         margin-top: 50px;
     }
 
+    button{
+        padding: 10px;
+    }
     .cabecera{
         position:relative;
     }
 
     div.hero{
-        background-image: url(../assets/img/medicoBg.png);
+        background-image: url(../assets/img/medicos.jpg);
         height: 100vh;
         height: 430px;
         opacity:0.24;

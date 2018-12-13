@@ -19,31 +19,37 @@ data() {
         input: {
             username: "",
             email: "",
-            password: "",
-            tipo: ""
-
+            password: ""
         }
     }
 },
 methods: {
             signup() {
-                if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                      //  localStorage.setItem('user',input.username)
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
+                if(this.input.username != "" && this.input.email != "" && this.input.password != "") {
+                    var formData = new FormData();
+                    formData.append('usuario', this.input.username);
+                    formData.append('email', this.input.email);
+                    formData.append('clave', this.input.password);
+                    console.log(formData)
+                    this.$http.post(this.$parent.servidor+'registro', formData)
+                        .then(resp => {
+                                        console.log(resp.body.respuesta);
+                                        if(resp.body.respuesta === 'OK') {
+                                            this.$router.replace({ name: "login" });
+                                        } else {
+                                            this.mensaje =resp.body.mensaje
+                                        }
+                                        
+                                       })
+                      
                 } else {
-                    console.log("A username and password must be present");
+                    this.mensaje ="A username and password must be present"
                 }
             }
         }
     }
 </script>
 <style scoped>
-
     .formulario {
         width: 90%;
         border: 1px solid #CCCCCC;
@@ -62,21 +68,17 @@ methods: {
       height: 40%;
       margin: 5px;
       padding: 1%;
-
     }
-
     @media only screen and (min-width:768px) {
     .formulario {
         width: 30%;
         margin: 0 auto;
         margin-top: 10%;
-
     }
     /*input, button{
       width: 90%;
       height: 40%;
     } esto sobra*/
-
    
 }
 </style>

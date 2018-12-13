@@ -7,6 +7,7 @@
       <nav class="navegacion-principal">
         <router-link to="about">Quienes somos</router-link>
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
+        <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
       </nav>
       <div class="menu-movil"  v-on:click="hiddenMenu = !hiddenMenu">
@@ -15,6 +16,7 @@
       <nav class="navegacion-menu-movil" v-bind:class="{ 'esconder': hiddenMenu }" >
         <router-link to="about">Quienes somos</router-link>
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
+        <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
       </nav>
     </div>
@@ -33,7 +35,8 @@
                     password: "mm"
                 },
                 hiddenMenu: true,
-                servidor: "http://localhost:5000/" 
+                servidor: "http://localhost:5000/",
+                categorias:[] 
             }
         },
 
@@ -48,7 +51,11 @@
                  this.$router.replace({ name: "search" });
 
             }
-        }
+        },
+        created(){
+            this.$http.get(this.servidor+'categoria')
+                      .then(resp => this.categorias =resp.body)
+          }
     }
 </script>
 <style>

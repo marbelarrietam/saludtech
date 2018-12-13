@@ -11,7 +11,7 @@
     </div>
     <div class="categoria">
       <nav class="categoria clearfix">
-          <li v-for="categoria in categorias"><a href="#">{{ categoria.descripcion }}</a></li>
+          <li v-for="categoria in this.$parent.categorias" :key="categoria"><a href="#">{{ categoria.descripcion }}</a></li>
       </nav>
     </div>
     <h1>Fácil, rápido y amigable con tu bolsillo</h1>
@@ -37,16 +37,11 @@ export default {
   name: "app",
   data() {
     return {
-      prueba: "HOLA",
-      categorias:[]
+      prueba: "HOLA"
     };
   },
   methods: { 
-  },
-  created(){
-      this.$http.get(this.$parent.servidor+'categoria')
-                .then(resp => this.categorias =resp.body)
-    }
+  }
 };
 </script>
 
@@ -61,6 +56,7 @@ export default {
 .cabecera{
   position:relative;
 }
+
 
 
 .box-hija{
@@ -78,7 +74,7 @@ export default {
 
 
 div.hero{
-    background-image: url(../assets/img/medicoBg.png);
+    background-image: url(../assets/img/medico.jpg);
     height: 100vh;
     height: 300px;
     opacity:0.24;
@@ -86,7 +82,6 @@ div.hero{
     background-size: cover;
     margin-top: -30px;
     padding-top: 40px;
-    background-size: 100%;
 }
 div.informacion-principal{
     text-align: right;
@@ -109,6 +104,7 @@ div.informacion-principal label{
 p.slogan{
     color:var(--azul);
     font-size: 24px;
+    margin-top: 28px;
 }
 #busqueda{
   width: 500px;
@@ -116,34 +112,10 @@ p.slogan{
   border: 2px solid #ccc;
   border-radius: 4px;
 }
-div.categoria{
-  width: 100%;
-  background-color:var(--azul);
-  color:var(--piel);
-  text-align: center;
-  
-}
-nav.categoria li{
-  list-style: none;
-}
 
-nav.categoria a {
-  font-family: "Oswald", sans-serif;
-  color: #ffffff;
-  font-size: 0.8em;
-  text-decoration: none;
-  transition: all 0.6s ease;
-  width: 100%;
-  padding: 10px 10px;
-  float: left;
-  width: 150px;    
-  text-align: center;
-  margin: 0;
+.nombre-sitio{
+  margin-bottom: 0px;
 }
-nav.categoria a:hover {
-  background-color: var(--piel);
-}
-
 @media only screen and (max-width: 768px) {
   div.informacion-principal{
     font-size: 28px;
