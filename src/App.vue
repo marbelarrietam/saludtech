@@ -13,22 +13,12 @@ export default {
  components: { stheader, stfooter },
    data() {
             return {
-                authenticated: false,
-                mockAccount: {
-                    username: "marbel",
-                    password: "mm"
-                }
+                
             }
-        },
-          methods: {
-            setAuthenticated(status) {
-                this.authenticated = status;
-                this.$emit("authenticated", status);
-                console.log(this.authenticated)
-            }
+        }
   }
 
-}
+
 
 </script>
 

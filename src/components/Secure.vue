@@ -8,7 +8,7 @@
                 <p>
                     ¿YA TE ENTERASTE DE LOS NUEVOS SERVICIOS Y TARIFAS QUE TENEMOS?
                 </p>
-                <button class="comentameMas">COMENTAME MAS</button>
+                <button class="comentameMas" v-on:click="principal()">COMENTAME MAS</button>
             </div>
         </div>
         
@@ -20,6 +20,11 @@
         name: 'Secure',
         data() {
             return {};
+        },
+        methods: {
+            principal(){
+                this.$router.replace({ name: "search" });
+            }
         }
     }
 </script>

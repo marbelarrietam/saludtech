@@ -44,7 +44,7 @@ export default {
   methods: { 
   },
   created(){
-      this.$http.get('http://192.168.2.98:5000/categoria')
+      this.$http.get(this.$parent.servidor+'categoria')
                 .then(resp => this.categorias =resp.body)
     }
 };
