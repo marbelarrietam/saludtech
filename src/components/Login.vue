@@ -10,6 +10,8 @@
      
       <router-link to="signup">Crear cuenta</router-link>
       <br>
+      <router-link to="signupmed">Si eres un médico y quieres prestar tus servicios registrate aquí</router-link>
+      <br>
       <br>
       <br>
       <div class="error-usuario">
@@ -53,7 +55,7 @@
                                        })
                       
                 } else {
-                    this.mensaje ="A username and password must be present"
+                    this.mensaje ="Debe llenar los campos"
                 }
             }
         }
@@ -61,7 +63,6 @@
 </script>
 
 <style scoped>
-
     .formulario {
         width: 90%;
         border: 1px solid #CCCCCC;
@@ -80,15 +81,12 @@
       height: 40%;
       margin: 5px;
       padding: 1%;
-
     }
-
     @media only screen and (min-width:768px) {
     .formulario {
         width: 30%;
         margin: 0 auto;
         margin-top: 10%;
-
     }
     /*input, button{
       width: 90%;
@@ -103,4 +101,5 @@
         color: red;
     }
 }
+
 </style>

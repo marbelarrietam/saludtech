@@ -78,7 +78,7 @@ export default {
 
 
 div.hero{
-    background-image: url(../assets/img/medicoBg.png);
+    background-image: url(../assets/img/medico.jpg);
     height: 100vh;
     height: 300px;
     opacity:0.24;

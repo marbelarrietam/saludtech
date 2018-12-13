@@ -1,8 +1,9 @@
 <template>
   <div id="servicios">
-    <h1>Hola</h1>
-    <div v-for="m in medicos" :key="m">
-      <stmed :med="m"></stmed>
+    <h1>Listado de nuestros médicos</h1>
+    <h2>Encuentra el indicado para ti</h2>
+    <div class="contenedor" v-for="m in medicos" :key="m">
+      <stmed class="tarjeta" :med="m"></stmed>
     </div>
   </div>
 </template>
@@ -14,7 +15,24 @@ name: 'servicios',
 components: { stmed },
 data(){
   return{
-  medicos: [{"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"}]
+  medicos: [
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"},
+      {"nombre":"marbel", "especialidad":"dermatologia", "imagen":"../assets/logo.png"}
+      ]
   }
 }
 }
@@ -22,4 +40,14 @@ data(){
 
 
 <style scoped>
+#servicios{
+    margin-top: 70px;
+    width: 100%;
+}
+
+h1 h2 .contenedor{
+    text-align: center;
+}
+
+
 </style>

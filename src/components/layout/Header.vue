@@ -7,6 +7,7 @@
       <nav class="navegacion-principal">
         <router-link to="about">Quienes somos</router-link>
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
+        <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
         <button v-on:click="estado">probar</button>
       </nav>
@@ -16,6 +17,7 @@
       <nav class="navegacion-menu-movil" v-bind:class="{ 'esconder': hiddenMenu }" >
         <router-link to="about">Quienes somos</router-link>
         <router-link v-if="authenticated" to="/" v-on:click.native="logout()" replace>Salir</router-link>
+        <router-link v-if="authenticated" to="reserve">Hacer reserva</router-link>
         <router-link v-if="!authenticated" to="login">Iniciar sesion</router-link>
         <button v-on:click="estado">probar</button>
       </nav>
