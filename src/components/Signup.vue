@@ -2,13 +2,11 @@
 <div id="register">
 <div class="formulario">
     <h1>Crear cuenta</h1>
-    <form>
-      <input type="text" name="username" v-model="input.username" placeholder="Usuario" required>
-      <input type="email" name="email" v-model="input.email" placeholder="Email" required>
-      <input type="password" name="password" v-model="input.password" placeholder="Contraseña" required>
+      <input type="text" name="username" v-model="input.username" placeholder="Usuario">
+      <input type="email" name="email" v-model="input.email" placeholder="Email">
+      <input type="password" name="password" v-model="input.password" placeholder="Contraseña">
       <!--input type="password" name="password" v-model="input.tipo" placeholder="Tipo" Esto no va, de eso se encarga el servicio-->
       <button v-on:click="signup()">Registrar</button>
-    </form>
 </div>
 </div>
 </template>
@@ -79,8 +77,6 @@ methods: {
       height: 40%;
     } esto sobra*/
 
-    button, .button{
-        padding: 2%;
-    }
+   
 }
 </style>

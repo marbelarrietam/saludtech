@@ -14,7 +14,7 @@
           <li v-for="categoria in categorias"><a href="#">{{ categoria.descripcion }}</a></li>
       </nav>
     </div>
-    <h1>Facil, rápido y amigable con tu bolsillo</h1>
+    <h1>Fácil, rápido y amigable con tu bolsillo</h1>
     <div class="box-principal clearfix">
       <div class="box-hija">
         <img src="../assets/img/facil.png" alt="">
@@ -138,7 +138,7 @@ nav.categoria a {
   float: left;
   width: 150px;    
   text-align: center;
-  margin: 0 10px 0 0;
+  margin: 0;
 }
 nav.categoria a:hover {
   background-color: var(--piel);
