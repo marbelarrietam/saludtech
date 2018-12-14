@@ -32,13 +32,17 @@
 <style scoped>
     #secure {
         background-color: #FFFFFF;
-        border: 1px solid #CCCCCC;
         padding: 20px;
-        margin-top: 50px;
+        margin-top: 60px;
+        margin-bottom: 100px;
     }
 
     button{
         padding: 10px;
+    }
+
+    .comentameMas{
+        margin-bottom: 40px;
     }
     
 </style>

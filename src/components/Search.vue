@@ -138,6 +138,7 @@ p.slogan{
     color:var(--azul);
     font-size: 24px;
     margin-top: 28px;
+    margin-bottom: 40px;
 }
 #busqueda{
   width: 500px;
